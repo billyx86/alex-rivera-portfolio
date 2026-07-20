@@ -2,35 +2,40 @@
 
 A dark, refined personal portfolio for **Alex Rivera**, a full-stack / frontend-focused web developer.
 
-**Live repo:** https://github.com/billyx86/alex-rivera-portfolio
+**Repository:** https://github.com/billyx86/alex-rivera-portfolio  
+**Instant demo (no build):** open [`docs/index.html`](./docs/index.html) in any browser — fully self-contained.
 
 ## Aesthetic
 
 - Near-black charcoal base (`#0c0b0a`)
-- Warm amber / copper accents (not purple gradient slop)
-- **Instrument Serif** for display type + **DM Sans** body + **JetBrains Mono** labels
-- Subtle grid + grain texture, bento project cards, scroll reveals
+- Warm amber / copper accents (no purple-gradient cliché)
+- **Instrument Serif** (display) + **DM Sans** (body) + **JetBrains Mono** (labels)
+- Subtle grid + film grain, bento project cards, scroll reveals
+- Mobile-first, works cleanly at ~390px
 
 ## Sections
 
-1. Sticky nav + CTA  
-2. Hero with pitch and CTAs  
+1. Sticky nav + Hire me CTA  
+2. Hero — pitch, availability, CTAs  
 3. About + stats + abstract portrait  
 4. Skills (Frontend / Backend / Tools)  
 5. Featured projects (bento grid)  
 6. Experience timeline  
-7. Contact form (client-side + sonner toast) + socials  
+7. Contact form (client-side toast) + socials  
 8. Footer  
 
-## Stack
+## Two ways to run
 
-- React 19 · TypeScript · Vite  
-- TanStack Start / Router  
-- Tailwind CSS v4  
-- Lucide · Sonner  
-- Nitro (Vercel preset, build-only)
+### A. Static (zero install)
 
-## Commands
+```bash
+# open the single-file demo
+open docs/index.html
+# or serve it
+cd docs && python3 -m http.server 8080 --bind 0.0.0.0
+```
+
+### B. Full React / TanStack Start app
 
 ```bash
 npm install
@@ -39,14 +44,23 @@ npm run typecheck
 npm run build
 ```
 
-## Project layout
+## Stack (React app)
+
+- React 19 · TypeScript · Vite  
+- TanStack Start / Router  
+- Tailwind CSS v4  
+- Lucide · Sonner  
+- Nitro (Vercel preset, build-only)
+
+## Layout
 
 ```
+docs/index.html   # polished static single-file portfolio
 src/
-  components/   # Nav, Hero, About, Skills, Projects, Experience, Contact, Footer
-  lib/          # content data + cn()
-  routes/       # TanStack file routes
-  styles.css    # Tailwind v4 theme + utilities
-vite.config.ts  # 0.0.0.0:8080, nitro only on build
+  components/     # Nav, Hero, About, Skills, Projects, Experience, Contact, Footer
+  lib/            # content data + cn()
+  routes/         # TanStack file routes
+  styles.css      # Tailwind v4 theme + utilities
+vite.config.ts    # 0.0.0.0:8080, nitro only on build
 startup.sh
 ```
