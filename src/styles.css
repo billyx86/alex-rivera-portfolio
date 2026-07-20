@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-ink: #0c0b0a;
+  --color-ink-2: #141210;
+  --color-ink-3: #1c1916;
+  --color-panel: #1a1714;
+  --color-border: #2a2520;
+  --color-border-soft: #231f1b;
+  --color-muted: #9a9086;
+  --color-soft: #c4bbb0;
+  --color-cream: #f3ece3;
+  --color-amber: #d4923a;
+  --color-amber-bright: #e8a94b;
+  --color-copper: #b87333;
+  --color-copper-deep: #8a5520;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ink text-cream antialiased;
+    font-family: var(--font-sans);
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(212, 146, 58, 0.08), transparent),
+      radial-gradient(ellipse 60% 40% at 100% 50%, rgba(184, 115, 51, 0.04), transparent);
+  }
+
+  ::selection {
+    background: rgba(212, 146, 58, 0.35);
+    color: #fff;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  .text-gradient-amber {
+    background: linear-gradient(135deg, #e8a94b 0%, #d4923a 45%, #b87333 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .border-hairline {
+    border-color: var(--color-border);
+  }
+
+  .grain {
+    position: relative;
+  }
+
+  .grain::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    opacity: 0.035;
+    z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(212, 146, 58, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(212, 146, 58, 0.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .delay-1 { transition-delay: 80ms; }
+  .delay-2 { transition-delay: 160ms; }
+  .delay-3 { transition-delay: 240ms; }
+  .delay-4 { transition-delay: 320ms; }
+}
