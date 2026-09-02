@@ -64,8 +64,17 @@ function RootComponent() {
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="no-js dark">
       <head>
+        <script
+          // Swap the no-js flag for js before first paint so reveal-on-scroll
+          // animations only hide content when JS is actually running. With JS
+          // disabled (or before hydration) the page renders fully visible.
+          dangerouslySetInnerHTML={{
+            __html:
+              "document.documentElement.classList.replace('no-js','js')",
+          }}
+        />
         <HeadContent />
       </head>
       <body className="grain min-h-svh bg-ink text-cream">
